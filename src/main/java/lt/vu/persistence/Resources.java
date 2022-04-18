@@ -27,5 +27,3 @@ public class Resources {
         em.close();
     }
 }
-
-//TODO kas cia yra

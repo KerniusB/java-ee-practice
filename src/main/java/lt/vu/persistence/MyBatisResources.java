@@ -24,6 +24,5 @@ public class MyBatisResources {
             throw new RuntimeException("MyBatisResources.produceSqlSessionFactory(): ", e);
         }
     }
-//    TODO kas cia yra
 }
 

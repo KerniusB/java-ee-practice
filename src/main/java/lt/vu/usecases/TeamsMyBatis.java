@@ -36,6 +36,4 @@ public class TeamsMyBatis {
         teamMapper.insert(teamToCreate);
         return "/myBatis/teams?faces-redirect=true";
     }
-
-//    TODO many to many
 }
