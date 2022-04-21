@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Sponsor.findAll", query = "select s from Sponsor as s")
+})
 @Table(name = "SPONSORS")
 @Getter
 @Setter

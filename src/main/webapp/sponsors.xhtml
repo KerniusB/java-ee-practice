@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Players that are sposored by  #{playersForSponsor.sponsor.name} sponsor:</h2>
+
+    <ol>
+        <ui:repeat value="#{playersForSponsor.sponsor.players}" var="player">
+            <li>#{player.name}</li>
+        </ui:repeat>
+    </ol>
+
+    <h:form>
+        <h:selectOneMenu value="#{playersForSponsor.playerToAdd.name}">
+            <f:selectItems value="#{players.allPlayers}" var="player" itemValue="#{player.name}" itemLabel="#{player.name}"/>
+        </h:selectOneMenu>
+
+        <h:commandButton value="Add players to sposorship"
+                         actionListener="#{playersForSponsor.addSponsor(playersForSponsor.playerToAdd.name)}"
+                         action="#{'sponsors?faces-redirect=true&amp;sponsorId='.concat(playersForSponsor.sponsor.id)}">
+            <f:param name="sponsorId" value="#{playersForSponsor.sponsor.id}" />
+        </h:commandButton>
+    </h:form>
+
+    <h:link outcome="index" value="Back to teams page"/>
+</h:body>
+</html>

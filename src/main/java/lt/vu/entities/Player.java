@@ -12,7 +12,9 @@ import java.util.Set;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Player.findAll", query = "select a from Player as a")
+        @NamedQuery(name = "Player.findAll", query = "select a from Player as a"),
+        @NamedQuery(name = "Player.findByName", query = "select a from Player as a where a.name=:name")
+
 })
 @Table(name = "PLAYER")
 @Getter

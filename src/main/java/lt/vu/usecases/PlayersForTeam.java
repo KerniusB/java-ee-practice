@@ -10,8 +10,8 @@ import java.util.Map;
 
 import lombok.Getter;
 import lombok.Setter;
-import lt.vu.persistence.PlayersDAO;
-import lt.vu.persistence.TeamsDAO;
+import lt.vu.persistance.PlayersDAO;
+import lt.vu.persistance.TeamsDAO;
 import lt.vu.entities.Player;
 import lt.vu.entities.Team;
 

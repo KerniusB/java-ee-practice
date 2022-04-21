@@ -1,4 +1,4 @@
-package lt.vu.persistence;
+package lt.vu.persistance;
 
 import lt.vu.entities.Team;
 

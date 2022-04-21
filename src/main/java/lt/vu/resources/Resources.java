@@ -1,4 +1,4 @@
-package lt.vu.persistence;
+package lt.vu.resources;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
