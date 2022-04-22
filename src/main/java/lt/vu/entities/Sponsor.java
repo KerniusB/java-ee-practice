@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Sponsor.findAll", query = "select s from Sponsor as s")
+        @NamedQuery(name = "Sponsor.findAll", query = "select s from Sponsor as s ORDER BY s.name")
 })
 @Table(name = "SPONSORS")
 @Getter
