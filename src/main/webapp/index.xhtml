@@ -20,11 +20,12 @@
     <h2>Sponsors:</h2>
     <ol>
         <ui:repeat value="#{sponsors.allSponsors}" var="sponsor">
-            <li><h:link value="#{sponsor.name}" outcome="sponsors?sponsorId=#{sponsor.id}"/></li>
+            <li><h:link value="#{sponsor.name} #{sponsor.amount}" outcome="sponsors?sponsorId=#{sponsor.id}"/></li>
         </ui:repeat>
     </ol>
     <h:form>
         <h:inputText value="#{sponsors.sponsorToCreate.name}" required="true"/>
+        <h:inputText value="#{sponsors.sponsorToCreate.amount}" required="true"/>
         <h:commandButton value="Add new sponsor" actionListener="#{sponsors.createSponsor()}" action="index?faces-redirect=true"/>
     </h:form>
 

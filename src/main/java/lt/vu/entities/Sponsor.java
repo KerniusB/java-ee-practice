@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Sponsor.findAll", query = "select s from Sponsor as s ORDER BY s.name")
+        @NamedQuery(name = "Sponsor.findAll", query = "select s from Sponsor as s ORDER BY s.amount DESC")
 })
 @Table(name = "SPONSORS")
 @Getter
@@ -23,6 +23,8 @@ public class Sponsor {
     private Integer id;
 
     private String name;
+
+    private Integer amount;
 
     @ManyToMany(mappedBy = "sponsors")
     @Column(name="PLAYERS_ID")
