@@ -10,4 +10,8 @@
 <!--    <class>lt.vu.persistance.AlternativePlayersDAO</class>-->
 <!--  </alternatives>-->
 
+<!--  <interceptors>-->
+<!--    <class>lt.vu.interceptor.MethodLogger</class>-->
+<!--  </interceptors>-->
+
 </beans>

@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import lt.vu.entities.Team;
+import lt.vu.interceptor.LoggedInvocation;
 
 @Specializes
 @Model
@@ -17,6 +18,7 @@ public class AlternativeTeamsDAO extends TeamsDAO{
     @Inject
     private EntityManager em;
 
+    @LoggedInvocation
     @Override
     public Team updateTeamName(Team team){
         return em.merge(team);
