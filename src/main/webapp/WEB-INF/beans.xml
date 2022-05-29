@@ -14,4 +14,8 @@
 <!--    <class>lt.vu.interceptor.MethodLogger</class>-->
 <!--  </interceptors>-->
 
+  <decorators>
+    <class>lt.vu.decorator.DecoratorPlayersDAO</class>
+  </decorators>
+
 </beans>
