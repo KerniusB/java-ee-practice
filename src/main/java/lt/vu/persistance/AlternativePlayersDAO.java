@@ -3,15 +3,16 @@ package lt.vu.persistance;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import lt.vu.entities.Player;
 import lt.vu.interfaces.PlayerDAOinterface;
 
+@Alternative
 @ApplicationScoped
-public class PlayersDAO implements PlayerDAOinterface {
-
+public class AlternativePlayersDAO implements PlayerDAOinterface {
     @Inject
     private EntityManager em;
 

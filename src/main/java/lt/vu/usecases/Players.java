@@ -8,13 +8,14 @@ import javax.inject.Inject;
 
 import lombok.Getter;
 import lt.vu.entities.Player;
+import lt.vu.interfaces.PlayerDAOinterface;
 import lt.vu.persistance.PlayersDAO;
 
 @Model
 public class Players {
 
     @Inject
-    private PlayersDAO playersDAO;
+    private PlayerDAOinterface playersDAO;
 
     @Getter
     private List<Player> allPlayers;
