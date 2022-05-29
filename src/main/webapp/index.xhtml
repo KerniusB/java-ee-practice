@@ -31,6 +31,13 @@
 
     <br></br>
 
-    <h:link outcome="myBatis/teams" value="Show teams with mybatis"/>
+    <hr/>
+    <h2>Get random team:</h2>
+    <h:form>
+        <h:outputText value="#{pickRandomTeam.teamLink}" escape="false"/>
+        <h:commandButton styleClass="btn btn-danger mt-3" value="Pick random team"
+                         action="#{pickRandomTeam.pickRandomTeam()}">
+        </h:commandButton>
+    </h:form>
 </h:body>
 </html>

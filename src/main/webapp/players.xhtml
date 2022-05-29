@@ -7,19 +7,27 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head/>
 <h:body>
-    <h2>Players playing in #{playersForTeam.team.name} team:</h2>
+    <h2>Players playing in "#{playersForTeam.team.name}" team:</h2>
     <ol>
         <ui:repeat value="#{playersForTeam.team.players}" var="player">
             <li>#{player.name}</li>
         </ui:repeat>
     </ol>
     <h:form>
-        <h:inputText a:placeholder="name" value="#{playersForTeam.playerToCreate.name}" required="true" />
+        <h:inputText a:placeholder="new team member name" value="#{playersForTeam.playerToCreate.name}" required="true" />
         <h:commandButton value="Add player to the team"
                          actionListener="#{playersForTeam.createPlayer}"
                          action="#{'players?faces-redirect=true&amp;teamId='.concat(playersForTeam.team.id)}">
                 <f:param name="teamId" value="#{playersForTeam.team.id}" />
         </h:commandButton>
+    </h:form>
+    <h:form>
+        <h:inputText a:placeholder="new team name" value="#{playersForTeam.teamName}" required="true"/>
+        <h:commandButton value="Update team name" action="#{playersForTeam.updateTeamName()}">
+            <f:param name="teamId" value="#{playersForTeam.team.id}"/>
+        </h:commandButton>
+        <h:outputText rendered="#{param['error'] == 'optimistic-lock-exception'}"
+                      value="Team name was modified by other user! Try again!"/>
     </h:form>
     <h:link outcome="index" value="Back to teams page"/>
 </h:body>

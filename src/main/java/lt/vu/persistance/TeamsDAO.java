@@ -17,6 +17,10 @@ public class TeamsDAO {
         return em.createNamedQuery("Team.findAll", Team.class).getResultList();
     }
 
+    public List<Team> loadAllTeamNames() {
+        return em.createNamedQuery("Team.findAllTeamNames", Team.class).getResultList();
+    }
+
     public void setEm(EntityManager em) {
         this.em = em;
     }
@@ -27,5 +31,9 @@ public class TeamsDAO {
 
     public Team findOne(Integer id) {
         return em.find(Team.class, id);
+    }
+
+    public Team updateTeamName(Team team){
+        return em.merge(team);
     }
 }

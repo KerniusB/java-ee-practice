@@ -1,21 +1,28 @@
 package lt.vu.usecases;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.Map;
+import java.util.Random;
+
+import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.persistence.OptimisticLockException;
+import javax.transaction.Transactional;
 
 import lombok.Getter;
 import lombok.Setter;
-import lt.vu.persistance.PlayersDAO;
-import lt.vu.persistance.TeamsDAO;
 import lt.vu.entities.Player;
 import lt.vu.entities.Team;
+import lt.vu.persistance.PlayersDAO;
+import lt.vu.persistance.TeamsDAO;
 
-@Model
+@ViewScoped
+@Setter
+@Getter
+@Named
 public class PlayersForTeam implements Serializable {
 
     @Inject
@@ -30,6 +37,9 @@ public class PlayersForTeam implements Serializable {
     @Getter @Setter
     private Player playerToCreate = new Player();
 
+    @Getter @Setter
+    private String teamName;
+
     @PostConstruct
     public void init() {
         Map<String, String> requestParameters =
@@ -42,5 +52,16 @@ public class PlayersForTeam implements Serializable {
     public void createPlayer() {
         playerToCreate.setTeam(this.team);
         playersDAO.persist(playerToCreate);
+    }
+
+    @Transactional
+    public String updateTeamName() {
+        team.setName(teamName);
+        try {
+            teamsDAO.updateTeamName(team);
+        } catch (OptimisticLockException e) {
+            return "players.xhtml?teamId=" + this.team.getId() + "&error=optimistic-lock-exception&faces-redirect=true";
+        }
+        return "players.xhtml?teamId=" + this.team.getId() + "&faces-redirect=true";
     }
 }
